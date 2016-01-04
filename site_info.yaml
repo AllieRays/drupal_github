@@ -1,0 +1,99 @@
+build_hook_file.path: /var/www/drupal_github/code/sites/default/fetcher.make.php
+'client.authentication class': \FetcherServices\Authentication\OpenSshKeys
+code_fetcher.class: Fetcher\CodeFetcher\Download
+code_fetcher.config: {  }
+code_fetcher.vcs_mapping:
+  git: Fetcher\CodeFetcher\VCS\Git
+configuration.ephemeral:
+  - initialized
+  - simulate
+  - verbose
+  - environment.remote
+  - data.admin.user.password
+  - database.newly_created
+configurators:
+  - \Fetcher\Configurator\Drush
+  - \Fetcher\Configurator\DrupalVersion
+'database class': \Fetcher\DB\Mysql
+database.admin.port: null
+database.admin.user.name: null
+database.admin.user.password: null
+database.database: drupal_github
+database.driver: mysql
+database.hostname: localhost
+database.port: ''
+database.prefix: ''
+database.user.hostname: localhost
+database.user.name: drupal_github
+database.user.password: p8GiaqCd4IzDXkTP06Zw
+database_synchronizer.class: Fetcher\DBSynchronizer\DrushSqlSync
+drush_alias.path: /home/vagrant/.drush/drupal_github.aliases.drushrc.php
+environment.local: local
+environments: {  }
+fetcher_client.class: \Fetcher\Utility\HTTPClient
+'file synchronizer class': Fetcher\FileSynchronizer\RsyncFileSync
+hostname: drupal_github.local
+info_fetcher.class: FetcherServices\InfoFetcher\FetcherServices
+info_fetcher.config:
+  host: 'https://extranet.zivtech.com'
+'log function': drush_log
+mysql.binary: mysql
+name: drupal_github
+name.global: drupal_github
+profile: bear
+profile.package: bear
+rsync-binary: rsync
+'server class': \Fetcher\Server\Apache2
+server.disable_site_command: 'sudo a2dissite drupal_github.conf'
+server.enable_site_command: 'sudo a2ensite drupal_github.conf'
+server.host_conf_path: /etc/apache2/sites-available/drupal_github.conf
+server.port: 80
+server.restart_command: 'sudo service apache2 reload'
+server.user: www-data
+server.vhost_available_folder: /etc/apache2/sites-available
+server.vhost_enabled_folder: /etc/apache2/sites-enabled
+server.webroot: /var/www
+settings_php.ini_set:
+  arg_separator.output: '&amp;'
+  magic_quotes_runtime: 0
+  magic_quotes_sybase: 0
+  session.cache_expire: 200000
+  session.cache_limiter: none
+  session.cookie_lifetime: 0
+  session.gc_maxlifetime: 200000
+  session.save_handler: user
+  session.use_cookies: 1
+  session.use_only_cookies: 1
+  session.use_trans_sid: 0
+  url_rewriter.tags: ''
+settings_php.requires: {  }
+settings_php.snippets:
+  - '$protocol = (isset($_SERVER[''HTTPS'']) && $_SERVER[''HTTPS''] === ''on'') ? ''https://'' : ''http://'';'
+  - '$base_url = $protocol . ''drupal_github.local'';'
+settings_php.variables:
+  conf:
+    fetcher_environment: local
+  databases:
+    default:
+      default:
+        database: drupal_github
+        username: drupal_github
+        password: p8GiaqCd4IzDXkTP06Zw
+        host: localhost
+        port: ''
+        driver: mysql
+        prefix: ''
+site: default
+site.code_directory: /var/www/drupal_github/code
+site.directory: /var/www/drupal_github/code/sites/default
+'site.info path': /var/www/drupal_github/site_info.yaml
+site.webroot: /var/www/drupal_github/webroot
+site.working_directory: /var/www/drupal_github
+symlinks:
+  /var/www/drupal_github/public_files: /var/www/drupal_github/code/sites/default/files
+  /var/www/drupal_github/code: /var/www/drupal_github/webroot
+'system class': \Fetcher\System\Posix
+'system hostname': local
+task_loader.class: \Fetcher\Task\TaskLoader
+version: '7'
+webroot_subdirectory: docroot
